@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complaints Form and List</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 20px;
+      }
+      .container {
+        margin: 0 auto;
+      }
+      ul {
+        list-style: none;
+        padding: 0px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+      li {
+        background-color: #dcd9d9;
+        padding: 20px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        box-shadow: 3px 3px 5px rgba(146, 143, 143, 0.1);
+        width: 430px;
+        height: 210px;
+        box-sizing: border-box;
+        transition: transform 0.2s ease;
+      }
+      li:hover {
+        transform: scale(1.05);
+      }
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        background-color: #000000;
+      }
+      p,
+      a {
+        display: inline-block;
+        margin: 0;
+      }
+      button {
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      p {
+        color: aliceblue;
+        font-size: 29px;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        letter-spacing: 1px;
+      }
+      .cards p {
+        color: #000000;
+      }
+      .filter {
+        margin: 10px;
+      }
+      #btn:hover {
+        background-color: rgb(227, 29, 88);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <p>COMPLAINTS FORM</p>
+        <a href="/complaintsform">
+          <button>Write a Complaint</button>
+        </a>
+      </div>
+      <div class="filter">
+        <center>
+          <form action="/" method="get" onclick="this.submit()">
+            <label for="department">Filter by Department:</label>
+            <select name="department" id="department">
+              <option value="" <%= !departmentFilter || departmentFilter === "" ? 'selected' : '' %>>All Departments</option>
+              <option value="cse" <%= departmentFilter === 'cse' ? 'selected' : '' %>>CSE</option>
+              <option value="it" <%= departmentFilter === 'it' ? 'selected' : '' %>>IT</option>
+              <option value="eee" <%= departmentFilter === 'eee' ? 'selected' : '' %>>EEE</option>
+              <option value="ece" <%= departmentFilter === 'ece' ? 'selected' : '' %>>ECE</option>
+              <option value="ai&ml" <%= departmentFilter === 'ai&ml' ? 'selected' : '' %>>AI&ML</option>
+            </select>
+            
+          </form>
+        </center>
+      </div>
+      
+
+    <div class="cards">
+      <% if (complaints && complaints.length > 0)   { %>
+      <ul>
+        <% complaints.forEach(function(complaint) { %>
+        <li>
+          <p><strong>Name:</strong> <%= complaint.name %></p>
+          <br />
+          <p><strong>Reg No:</strong> <%= complaint.reg_no %></p>
+          <br />
+          <p><strong>Complaint Type:</strong> <%= complaint.com_type %></p>
+          <br />
+          <p><strong>Department:</strong> <%= complaint.department %></p>
+          <br />
+
+          <form action="/like/<%= complaint._id %>" method="post">
+            <button type="submit" id="btn">&hearts;</button>
+            <p><strong></strong> <%= complaint.likes || 0 %></p>
+          </form>
+        </li>
+        <% }) %>
+      </ul>
+      <% } else { %>
+      <p>No complaints submitted yet.</p>
+      <% } %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complaints Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #9de0f1;
+      }
+      form {
+        width: 60vh;
+        margin: 40px auto;
+        padding: 40px;
+        border: 7px solid #ffffff;
+        border-radius: 25px;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+        background-color: #6ada6d;
+        color: #fff;
+        text-shadow: 1px 1px 1px rgb(0, 0, 0);
+        letter-spacing: 1px;
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      input[type="text"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      input[type="submit"] {
+        background-color: #7ac0d1;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-shadow: 1px 1px 1px black;
+      }
+      input[type="submit"]:hover {
+        background-color: #6f9dab;
+      }
+      select {
+        width: 50%;
+        margin: 20px auto;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        letter-spacing: 1px;
+      }
+      h1 {
+        text-align: center;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        letter-spacing: 1px;
+        color: #ffffff;
+        text-shadow: 1px 2px 2px black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>COMPLAINTS FORM</h1>
+    <form method="post" action="/complaintsform">
+      <label for="name">Name :</label>
+      <input type="text" id="name" name="name" />
+      
+      <label for="reg_no">Registration Number :</label>
+      <input type="text" id="reg_no" name="reg_no" />
+      
+      <label for="com_type">Complaint Type :</label>
+      <input type="text" id="com_type" name="com_type" />
+      
+      <select id="department" name="department">
+        <option value="">Select Department</option>
+        <option value="cse">CSE</option>
+        <option value="it">IT</option>
+        <option value="eee">EEE</option>
+        <option value="ece">ECE</option>
+        <option value="ai&ml">AI&ML</option>
+      </select>
+      
+      <label for="complaint">Complaint :</label>
+      <textarea id="complaint" name="complaint" rows="5" cols="50"></textarea>
+      
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
